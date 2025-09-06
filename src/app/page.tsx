@@ -1,4 +1,5 @@
 import Image from "next/image";
+import ExampleComponent from "@/components/ExampleComponent";
 
 export default function Home() {
   return (
@@ -24,6 +25,12 @@ export default function Home() {
             Save and see your changes instantly.
           </li>
         </ol>
+
+        {/* Redux Toolkit Example Component */}
+        <div className="w-full">
+          <h2 className="text-xl font-bold mb-4">Redux Toolkit Example</h2>
+          <ExampleComponent />
+        </div>
 
         <div className="flex gap-4 items-center flex-col sm:flex-row">
           <a
