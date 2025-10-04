@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import { Provider } from "react-redux";
-import { makeStore, AppStore } from "../store"; // Updated path
+import { type AppStore, makeStore } from "../store"; // Updated path
 
 export default function StoreProvider({
   children,

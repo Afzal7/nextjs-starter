@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import StoreProvider from "@/redux/providers/StoreProvider"; // Updated path
+import { ClerkProvider } from "@clerk/nextjs";
+import Header from "@/components/Header";
+import StoreProvider from "@/redux/providers/StoreProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,12 +26,28 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <StoreProvider>{children}</StoreProvider>
-      </body>
-    </html>
+    <ClerkProvider
+      appearance={{
+        elements: {
+          // Customize the appearance of Clerk components here
+          formButtonPrimary:
+            "bg-teal-600 hover:bg-teal-700 text-white font-medium",
+          card: "shadow-lg rounded-xl border border-gray-200 dark:border-gray-800",
+        },
+      }}
+      signInUrl="/sign-in"
+      signUpUrl="/sign-up"
+    >
+      <html lang="en">
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
+        >
+          <StoreProvider>
+            <Header />
+            <main className="flex-grow">{children}</main>
+          </StoreProvider>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
