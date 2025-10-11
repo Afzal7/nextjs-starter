@@ -1,5 +1,6 @@
 import Image from "next/image";
 import ExampleComponent from "@/components/ExampleComponent";
+import FAQsTwo from "@/components/faqs-2";
 
 export default function Home() {
   return (
@@ -57,6 +58,8 @@ export default function Home() {
             Read our docs
           </a>
         </div>
+
+        <FAQsTwo />
       </main>
       <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
         <a
